@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-flag = True;
+flag = True
 stringZYX = ""
 for i in range(ord("z"), ord("a")-1, -1):
     if flag:
