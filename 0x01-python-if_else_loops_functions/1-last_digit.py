@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 import random
+import math
 number = random.randint(-10000, 10000)
-rem = number % 10
+rem = math.floor(math.fmod(number, 10))
 base = "Last digit of "+str(number) + " is " + str(rem)
 if rem > 5:
     print(f"{base} and is greater than 5")
