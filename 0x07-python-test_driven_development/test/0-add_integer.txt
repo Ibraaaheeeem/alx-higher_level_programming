@@ -1,0 +1,57 @@
+'''
+# Import the required function
+>>> from importlib import import_module
+>>> add_integer = import_module('0-add_integer').add_integer
+
+# Pass in two integers
+>>> add_integer(5, 4)
+9
+
+# Pass in single integer,
+# will be added to 98
+>>> add_integer(2)
+100
+
+# Pass in two floats
+# Each will be rouded to int
+>>> add_integer(2.1, 6.7)
+8
+
+# Invalid arguments
+>>> try:
+...     add_integer('3', 3)
+... except TypeError as ex:
+...     print(ex.args[0])
+a must be an integer
+>>> try:
+...     add_integer(('3'), 3)
+... except TypeError as ex:
+...     print(ex.args[0])
+a must be an integer
+>>> try:
+...     add_integer(3, None)
+... except TypeError as ex:
+...     print(ex.args[0])
+b must be an integer
+>>> try:
+...     add_integer(3, '4')
+... except TypeError as ex:
+...     print(ex.args[0])
+b must be an integer
+>>> try:
+...     add_integer(float('inf'), float('inf'))
+... except Exception as ex:
+...     print(ex.args[0])
+cannot convert float infinity to integer
+>>> try:
+...     add_integer(float('inf'), 4)
+... except Exception as ex:
+...     print(ex.args[0])
+cannot convert float infinity to integer
+>>> try:
+...     add_integer(float('NaN'), 5)
+... except Exception as ex:
+...     print(ex.args[0])
+cannot convert float NaN to integer
+
+'''
