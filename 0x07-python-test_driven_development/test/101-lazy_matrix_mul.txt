@@ -1,0 +1,25 @@
+The ``lazy_matrix_mul module``
+=========================
+
+Using ``lazy_matrix_mul``
+-------------------
+
+Importing function
+	>>> lazy_matrix_mul = __import__("101-lazy_matrix_mul").lazy_matrix_mul
+
+Check for mod docstring:
+	>>> mod = __import__("101-lazy_matrix_mul").__doc__
+	>>> len(mod) > 1
+	True
+
+Check func doctring:
+	>>> doc = lazy_matrix_mul.__doc__
+	>>> len(doc) > 1
+	True
+
+Test Normal Case:
+	>>> m_a = [[1, 2], [3, 4]]
+	>>> m_b = [[1, 2], [3, 4]]
+	>>> lazy_matrix_mul(m_a, m_b)
+	array([[ 7, 10],
+	       [15, 22]])
