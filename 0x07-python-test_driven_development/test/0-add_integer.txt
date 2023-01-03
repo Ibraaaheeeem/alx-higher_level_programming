@@ -1,57 +1,71 @@
-'''
-# Import the required function
->>> from importlib import import_module
->>> add_integer = import_module('0-add_integer').add_integer
+# 0-add_integer.txt
 
-# Pass in two integers
->>> add_integer(5, 4)
-9
+>>> add_integer = __import__('0-add_integer').add_integer
 
-# Pass in single integer,
-# will be added to 98
+check for two positive integers.
+>>> add_integer(1, 2)
+3
+
+check for two floats.
+>>> add_integer(1.0, 2.0)
+3
+
+Checks for only one value
 >>> add_integer(2)
 100
 
-# Pass in two floats
-# Each will be rouded to int
->>> add_integer(2.1, 6.7)
-8
+Check for float and int
+>>> add_integer(100.3, -2)
+98
 
-# Invalid arguments
->>> try:
-...     add_integer('3', 3)
-... except TypeError as ex:
-...     print(ex.args[0])
-a must be an integer
->>> try:
-...     add_integer(('3'), 3)
-... except TypeError as ex:
-...     print(ex.args[0])
-a must be an integer
->>> try:
-...     add_integer(3, None)
-... except TypeError as ex:
-...     print(ex.args[0])
-b must be an integer
->>> try:
-...     add_integer(3, '4')
-... except TypeError as ex:
-...     print(ex.args[0])
-b must be an integer
->>> try:
-...     add_integer(float('inf'), float('inf'))
-... except Exception as ex:
-...     print(ex.args[0])
-cannot convert float infinity to integer
->>> try:
-...     add_integer(float('inf'), 4)
-... except Exception as ex:
-...     print(ex.args[0])
-cannot convert float infinity to integer
->>> try:
-...     add_integer(float('NaN'), 5)
-... except Exception as ex:
-...     print(ex.args[0])
-cannot convert float NaN to integer
+Check for wrong values
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+	...
+TypeError: b must be an integer
 
-'''
+>>> add_integer(None)
+Traceback (most recent call last):
+	...
+TypeError: a must be an integer
+
+>>> add_integer("School", 7)
+Traceback (most recent call last):
+	...
+TypeError: a must be an integer
+
+>>> add_integer(4, None)
+Traceback (most recent call last):
+	...
+TypeError: b must be an integer
+
+Check for very large number.
+>>> add_integer(float("inf"), 5)
+Traceback (most recent call last):
+	...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(5, float("inf"))
+Traceback (most recent call last):
+        ...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(float("-inf"), 8)
+Traceback (most recent call last):
+        ...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(float("NaN"), 6)
+Traceback (most recent call last):
+	...
+ValueError: cannot convert float NaN to integer
+
+>>> add_integer(2, float("-inf"))
+Traceback (most recent call last):
+        ...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer()
+Traceback (most recent call last):
+	...
+TypeError: add_integer() missing 1 required positional argument: 'a'
